@@ -34,3 +34,30 @@ I did create a repl.it for this one but found it less helpful on this problem.
 https://repl.it/@maggieprice/EvenRespectfulWearable
 
 ## Exercise II
+
+<!-- I'm just letting you know that my geometry hating brain wants to choose the obvious answer of the 1st floor lol -->
+
+------- We can assume that the ground floor(0) will not break any eggs. -------
+Given:
+We have a building
+We have a large but finite number of eggs.
+Building has n amount of floors.
+Floors from nth+ will break eggs if they are dropped from that floor and the nth floors < that floor will not.
+
+Getting:
+We want to know which floor or up to which floor breaks the least amount of eggs
+
+Plan: 1. If there aren't too many floors, like maybe 10 or less, we can start at the bottom and drop a few eggs from each floor, then record the amount of breaks. We can see how consistent that number stays as increase floors. So for example if floors 1-3 cause us to only loose a couple eggs each time but floors 4-7 cause us to loose 5 or so eggs each time, we know that floors 1-3 is our best case. 2. If there are a lot of floors, we can start with a middle floor and drop a few to see what happens. Then go up and down up half of those floors and see how that number changes. So for example. If there are 20 floors, test from floor 5, 10, and 15. If the number is extensively higher at 10 than 5, we know we don't want those floors and so the desired value of f must be 0 < f < 10 (for example). So if we do n/2 to start and do a check of n/2 at each new value, we should get out answer.
+
+Conclusion:
+I am basing my complexity from plan # 2. I think the complexity is O(n log n) because as the number of floors increases, so will the time. This eliminates everything but n log n, n^c, and c^n (I excluded n! because it doesn't increase astronomically with a few inputs). Since I am not raising anything to a power, I chose (n log n).
+
+<!-- Scratch potential code/pseudocode mix below -->
+
+<!--  def building(floors) -->
+<!--    floors = 10 -->
+<!--    eggCount = len(eggs) -->
+<!--    eggsLost = number of eggs broke from each floor -->
+<!--    f = an array of floors where eggsLost = 0 -->
+<!-- specific floors have equations like floor[6]= eggCount - eggsLost -->
+<!-- if floor[i] breaks < x eggs, return that floor into a new array-->
